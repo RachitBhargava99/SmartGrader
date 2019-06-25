@@ -1,7 +1,7 @@
-from utils import get_file_content, file_filler, string_comparison
+from utils import get_file_content, file_filler, string_comparison, variable_finder
 from common_data import common_header_data, common_footer_data, general_timeout, timeout_header, gradescope_header,\
     main_method_checker, common_closing_data, general_method_header, general_prompt_creator, general_assertion_creator,\
-    general_success_filler
+    general_success_filler, class_finder
 
 
 def smart_grader_driver(class_name):
@@ -37,6 +37,8 @@ def smart_grader_driver(class_name):
 
     file_filler(autograder, common_header_data)
 
+    file_filler(autograder, class_finder(class_name))
+
     # Test compilation and existence of main method
 
     file_filler(autograder, timeout_header(general_timeout))
@@ -50,6 +52,9 @@ def smart_grader_driver(class_name):
         if case_data[0] == 'SC':
             case_data = case_data[1:]
             string_comparison(autograder, case_data, class_name)
+        elif case_data[0] == 'VC':
+            case_data = case_data[1:]
+            variable_finder(autograder, case_data, class_name)
 
     # Footer printing statement
 

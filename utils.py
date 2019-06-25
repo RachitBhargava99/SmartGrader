@@ -94,3 +94,53 @@ def string_comparison(file, case_data, class_name):
     file_filler(file, general_success_filler(case_data[3]))
 
     file_filler(file, common_closing_data)
+
+
+def variable_finder(file, case_data, class_name):
+
+    """Fills the file with the string comparison data
+    Method Type: NORMAL - HELPER
+
+    Parameters
+    ----------
+    file : <class '_io.TextIOWrapper'>
+        File to be written to
+    case_data : List with all data necessary for the function to work
+        0   - display_name : str
+        1   - points : str
+        2   - variable_name : str
+        3   - check_parameters : str
+                T for variable_type
+                A for access_specifier
+                S for isStatic
+        4   - variable_type : str       OPTIONAL
+        5   - access_specifier : str    OPTIONAL
+        6   - isStatic : str            OPTIONAL
+                true / false
+        7   - success_message : str
+
+    Returns
+    -------
+    status : int
+        Returns 0 for success, 1 for failure
+    """
+
+    file_filler(file, timeout_header(general_timeout))
+    file_filler(file, gradescope_header(case_data[0], case_data[1]))
+    file_filler(file, general_method_header(f'test_{case_data[2]}'))
+    file_filler(file, basic_variable_finder(case_data[2]))
+
+    check_parameters = case_data[3]
+    i = 4
+    if 'T' in check_parameters:
+        file_filler(file, type_checker(case_data[i]))
+        i += 1
+    if 'A' in check_parameters:
+        file_filler(file, access_specifier_checker(case_data[i]))
+        i += 1
+    if 'S' in check_parameters:
+        file_filler(file, static_checker(True if case_data[i] == 'true' else False))
+        i += 1
+
+    file_filler(file, general_success_filler(case_data[i]))
+    file_filler(file, common_closing_data)
