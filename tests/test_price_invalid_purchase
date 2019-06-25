@@ -1,0 +1,16 @@
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]C
+[O]
+[O]What would you like to buy?
+[I]apple
+[O]Sorry, we don't have apple.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]N
+[O]
+[O]Here are the items you have purchased:
+[T]The total cost of your purchase is $0.00. Thank you for shopping!
+[O]
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]E
+[O]Goodbye!

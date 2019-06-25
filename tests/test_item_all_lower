@@ -1,0 +1,16 @@
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]M
+[O]
+[O]Which item would you like to restock?
+[I]milk
+[O]
+[O]By how much are you restocking Milk?
+[I]2
+[T]Stock of Milk has now been increased to 4.
+[O]
+[O]Are you finished with restocking? [Y]es or [N]o?
+[I]Y
+[O]
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]E
+[O]Goodbye!

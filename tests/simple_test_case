@@ -1,0 +1,12 @@
+[O]Are you a [M]anager, a [C]ustomer, or would you like to [E]xit?
+[I]M
+[T]Which item would you like to restock?
+[I]Broccoli
+[T]By how much are you restocking Broccoli?
+[I]3
+[T]Stock of Broccoli is now increased to 3.
+[T]Are you finished with restocking? [Y]es or [N]o?
+[I]N
+[T]Are you a [M]anager, a [C]ustomer, or would you like to [E]xit?
+[I]E
+[O]Goodbye!

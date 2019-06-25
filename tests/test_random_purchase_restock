@@ -1,0 +1,88 @@
+[O]Are you a [M]anager, a [C]ustomer, or would you like to [E]xit?
+[I]M
+[O]
+[O]Which item would you like to restock?
+[I]Broccoli
+[O]
+[O]By how much are you restocking Broccoli?
+[I]3
+[T]Stock of Broccoli is now increased to 3.
+[O]
+[O]Are you finished with restocking? [Y]es or [N]o?
+[I]N
+[O]
+[O]Which item would you like to restock?
+[I]Java
+[O]You don’t have Java!
+[O]
+[O]Are you finished with restocking? [Y]es or [N]o?
+[I]Y
+[O]
+[O]Are you a [M]anager, a [C]ustomer, or would you like to [E]xit?
+[I]C
+[O]
+[O]What would you like to buy?
+[I]Broccoli
+[O]
+[O]How much Broccoli would you like to buy?
+[I]2
+[O]You have added 2 Broccoli to your shopping cart.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]Y
+[O]
+[O]Would you like to continue shopping?
+[I]Y
+[O]
+[O]What would you like to buy?
+[I]Watermelon
+[O]
+[O]How much Watermelon would you like to buy?
+[I]15
+[O]You have added 15 Watermelon to your shopping cart.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]Y
+[O]
+[O]What would you like to buy?
+[I]Milk
+[O]How much Milk would you like to buy?
+[I]1
+[O]You have added 1 Milk to your shopping cart.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]Y
+[O]
+[O]What would you like to buy?
+[I]Watermelon
+[O]
+[O]How much Watermelon would you like to buy?
+[I]5
+[O]You have added 5 Watermelon to your shopping cart.
+[O]
+[O]What would you like to buy?
+[I]Watermelon
+[O]
+[O]How much Watermelon would you like to buy?
+[I]3000
+[T]Sorry, we only have 0 Watermelon in stock.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]Y
+[O]
+[O]What would you like to buy?
+[I]Java
+[O]Sorry, we don’t have Java.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]N
+[O]
+[O]Here are the items you have purchased:
+[O]2 Broccoli
+[O]20 Watermelon
+[O]1 Milk
+[O]The total cost of your purchase is $53.77. Thank you for shopping!
+[O]
+[O]Are you a [M]anager, a [C]ustomer, or would you like to [E]xit?
+[I]E
+[O]Goodbye!

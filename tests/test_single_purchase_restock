@@ -1,0 +1,43 @@
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]C
+[O]
+[O]What would you like to buy?
+[I]Milk
+[O]
+[O]How much would you like to buy?
+[I]1
+[O]You added 1 Milk to your shopping cart.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]Y
+[O]
+[O]What would you like to buy?
+[I]Milk
+[O]
+[O]How much would you like to buy?
+[I]100
+[T]Sorry, we only have 1 Milk in stock.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]N
+[O]
+[O]Here are the items you have purchased:
+[O]1 Milk
+[O]The total cost of your purchase is $1.99. Thank you for shopping!
+[O]
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]M
+[O]
+[O]Which item would you like to restock?
+[I]Milk
+[O]
+[O]By how much are you restocking Milk?
+[I]2
+[T]Stock of Milk has now been increased to 3.
+[O]
+[O]Are you finished with restocking? [Y]es or [N]o?
+[I]Y
+[O]
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]E
+[O]Goodbye!
