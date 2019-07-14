@@ -82,3 +82,9 @@ def access_specifier_checker(access_specifier):
 def static_checker(is_static):
     return f'''        ReflectAssert.aseertStatic(f, {'true' if is_static else 'false'});
 '''
+
+
+def basic_interface_finder(interface_name):
+    return f'''        Class<?> testInterface = ReflectHelper.getClass("{interface_name}");
+        ReflectAssert.assertInterface(testInterface);
+'''

@@ -11,6 +11,9 @@ This feature allows you to search for variables, no matter where they might be i
 However, this method does not search for any local variables.
 You may search for instance variables / static variables only using this feature.
 
+### Interface Finder
+This feature allows you to search for interface in the submitted files.
+
 ## How To Use
 ### Basic Setup
 The file must start with the following data:
@@ -32,7 +35,7 @@ Here's the format the information is expected in starting at line 0, after the l
         4+  - error message
 
 ### Variable Finder
-The test case in test_casaes file must have 'VC' before the main test specifications.
+The test case in test_cases file must have 'VC' before the main test specifications.
 Here's the format expected for the test specifications:
 
         0   - display_name : str
@@ -48,3 +51,11 @@ Here's the format expected for the test specifications:
                 true / false
         7   - success_message : str
 
+### Interface Finder
+The test case in test_cases file must have 'IF' before the main test specifications
+Here's the format expected for the test specifications:
+
+        0   - display_name : str
+        1   - points : str
+        2   - interface_name : str
+        3   - success_message : str

@@ -144,3 +144,35 @@ def variable_finder(file, case_data, class_name):
 
     file_filler(file, general_success_filler(case_data[i]))
     file_filler(file, common_closing_data)
+
+
+def interface_finder(file, case_data, class_name):
+
+    """Fills the file with the string comparison data
+    Method Type: NORMAL - HELPER
+
+    Parameters
+    ----------
+    file : <class '_io.TextIOWrapper'>
+        File to be written to
+    case_data : List with all data necessary for the function to work
+        0   - display_name : str
+        1   - points : str
+        2   - interface_name : str
+        3   - success_message : str
+
+    Returns
+    -------
+    status : int
+        Returns 0 for success, 1 for failure
+    """
+
+    # TODO: Add feature to check for variables and abstract / default methods in interfaces
+
+    file_filler(file, timeout_header(general_timeout))
+    file_filler(file, gradescope_header(case_data[0], case_data[1]))
+    file_filler(file, general_method_header(f'test_interface_{case_data[2]}'))
+    file_filler(file, basic_interface_finder(case_data[2]))
+
+    file_filler(file, general_success_filler(case_data[3]))
+    file_filler(file, common_closing_data)
