@@ -14,6 +14,13 @@ You may search for instance variables / static variables only using this feature
 ### Interface Finder
 This feature allows you to search for interface in the submitted files.
 
+### Method Existence Checker
+This feature allows you to check for presence of some method.
+
+### Method Return Value Verifier
+This feature allows you to ensure that some given method is working as it should.
+In other words, it checks whether or not is a given function returning the desired value.
+
 ## How To Use
 ### Basic Setup
 The file must start with the following data:
@@ -59,3 +66,29 @@ Here's the format expected for the test specifications:
         1   - points : str
         2   - interface_name : str
         3   - success_message : str
+
+### Method Existence Checker
+The test case in test_cases file must have 'ME' before the main test specifications.
+Here's the format expected for the test specifications:
+
+        0   - display_name : str
+        1   - points : str
+        2   - class_name : str
+        3   - method_name : str
+        4   - success_message : str
+
+### Method Return Value Verifier
+The test case in test_cases file must have 'MC' before the main test specifications.
+Here's the format expected for the test specifications:
+
+        0   - display_name : str
+        1   - points : str
+        2   - class_name : str
+        3   - method_name : str
+        4   - input_types : str
+            Comma-separated input data types
+        5   - sample_inputs : str
+            Comma-separated sample inputs
+        6   - expected_return : str
+            Expected return value (enter 'void' for void return type / no return expected)
+        7   - success_message : str

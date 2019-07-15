@@ -172,7 +172,79 @@ def interface_finder(file, case_data, class_name):
     file_filler(file, timeout_header(general_timeout))
     file_filler(file, gradescope_header(case_data[0], case_data[1]))
     file_filler(file, general_method_header(f'test_interface_{case_data[2]}'))
+
     file_filler(file, basic_interface_finder(case_data[2]))
 
     file_filler(file, general_success_filler(case_data[3]))
+    file_filler(file, common_closing_data)
+
+
+def method_finder(file, case_data, class_name):
+
+    """Fills the file with the string comparison data
+    Method Type: NORMAL - HELPER
+
+    Parameters
+    ----------
+    file : <class '_io.TextIOWrapper'>
+        File to be written to
+    case_data : List with all data necessary for the function to work
+        0   - display_name : str
+        1   - points : str
+        2   - class_name : str
+        3   - method_name : str
+        4   - success_message : str
+
+    Returns
+    -------
+    status : int
+        Returns 0 for success, 1 for failure
+    """
+
+    file_filler(file, timeout_header(general_timeout))
+    file_filler(file, gradescope_header(case_data[0], case_data[1]))
+    file_filler(file, general_method_header(f'test_{case_data[3]}_exists'))
+
+    file_filler(file, basic_method_finder(case_data[2], case_data[3]))
+
+    file_filler(file, general_success_filler(case_data[4]))
+    file_filler(file, common_closing_data)
+
+
+def method_value_verifier(file, case_data, class_name):
+
+    """Fills the file with the string comparison data
+    Method Type: NORMAL - HELPER
+
+    Parameters
+    ----------
+    file : <class '_io.TextIOWrapper'>
+        File to be written to
+    case_data : List with all data necessary for the function to work
+        0   - display_name : str
+        1   - points : str
+        2   - class_name : str
+        3   - method_name : str
+        4   - input_types : str
+            Comma-separated input data types
+        5   - sample_inputs : str
+            Comma-separated sample inputs
+        6   - expected_return : str
+            Expected return value (enter 'void' for void return type / no return expected)
+        7   - success_message : str
+
+    Returns
+    -------
+    status : int
+        Returns 0 for success, 1 for failure
+    """
+
+    file_filler(file, timeout_header(general_timeout))
+    file_filler(file, gradescope_header(case_data[0], case_data[1]))
+    file_filler(file, general_method_header(f'test_{case_data[3]}_exists'))
+
+    file_filler(file, basic_method_finder(case_data[2], case_data[3]))
+    file_filler(file, method_return_value_checker(case_data[2], case_data[3], [x.strip() for x in case_data[4].split(',')], [x.strip() for x in case_data[5].split(',')], True if case_data[6] != 'void' else False, None if case_data[6] == 'void' else case_data[6]))
+
+    file_filler(file, general_success_filler(case_data[4]))
     file_filler(file, common_closing_data)

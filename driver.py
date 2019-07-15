@@ -1,4 +1,5 @@
-from utils import get_file_content, file_filler, string_comparison, variable_finder, interface_finder
+from utils import get_file_content, file_filler, string_comparison, variable_finder, interface_finder, method_finder,\
+    method_value_verifier
 from common_data import common_header_data, common_footer_data, general_timeout, timeout_header, gradescope_header,\
     main_method_checker, common_closing_data, general_method_header, general_prompt_creator, general_assertion_creator,\
     general_success_filler, class_finder
@@ -58,6 +59,12 @@ def smart_grader_driver(class_name):
         elif case_data[0] == 'IF':
             case_data = case_data[1:]
             interface_finder(autograder, case_data, class_name)
+        elif case_data[0] == 'ME':
+            case_data = case_data[1:]
+            method_finder(autograder, case_data, class_name)
+        elif case_data[0] == 'MC':
+            case_data = case_data[1:]
+            method_value_verifier(autograder, case_data, class_name)
 
     # Footer printing statement
 

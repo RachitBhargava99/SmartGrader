@@ -88,3 +88,31 @@ def basic_interface_finder(interface_name):
     return f'''        Class<?> testInterface = ReflectHelper.getClass("{interface_name}");
         ReflectAssert.assertInterface(testInterface);
 '''
+
+
+def basic_method_finder(class_name, method_name):
+    return f'''        ReflectAssert.assertMethodExists("Method {method_name} missing or incorrectly named.", {class_name}, "{method_name}";
+'''
+
+
+def method_return_value_checker(class_name, method_name, input_types, sample_inputs, is_void, expected_return=None):
+    return f'''        Object instance;
+        try {{
+            Constructor con = ReflectHelper.getDeclaredConstuctor(ReflectHelper.getClass("{class_name}{', '.join([x + '.TYPE' for x in input_types])}"));
+            instance ReflectHelper.getInstance(con{', '.join(sample_inputs)});
+        }} catch (AssertionError ae) {{
+            fail("Cannot instantiate Triangle class");
+            return null;
+        }}
+        
+        Method getPerimeter = ReflectHelper.getDeclaredMethod({class_name}, "{method_name}");
+
+        MethodInvocationReport mir = ReflectHelper.invokeMethod({method_name}, instance);
+        
+        {f"""assertTrue("No return value present for {method_name}", mir.returnValue.isPresent());
+        
+        assertTrue("{method_name} does not return the correct value", mir.returnValue.get() == {expected_return})""" if not is_void 
+    else f"""assertTrue("Return value present for {method_name}", !mir.returnValue.isPresent());"""}
+
+        System.out.println("Your class has a method {method_name}");
+'''
