@@ -71,13 +71,17 @@ def string_comparison(file, case_data, class_name):
 
     filename = case_data[0]
     print(filename)
-    file_data = get_file_content(filename)
+    try:
+        file_data = get_file_content(filename)
+    except IOError:
+        print(f"Error in reading {filename}")
+        return 1
     test_lines = file_data.split('\n')
     input_lines = [(test_lines[x][3:], x) for x in range(len(test_lines)) if test_lines[x][:3] == '[I]']
     output_lines = [(test_lines[x][3:], test_lines[x][1]) for x in range(len(test_lines)) if
-                    test_lines[x][:3] == '[O]' or test_lines[x][:3] == '[T]']
+                    test_lines[x][:3] == '[O]' or test_lines[x][:3] == '[T]' or test_lines[x][:3] == '[C]']
     ignore_lines = [(output_lines[x][0], x) for x in range(len(output_lines)) if output_lines[x][1] == 'O']
-    test_lines = [(output_lines[x][0], x) for x in range(len(output_lines)) if output_lines[x][1] == 'T']
+    test_lines = [(output_lines[x][0], x, output_lines[x][1]) for x in range(len(output_lines)) if output_lines[x][1] == 'T' or output_lines[x][1] == 'C']
     input_text = '\\n'.join([x[0] for x in input_lines])
     # print(f"Input Lines: {input_lines}\nIgnore Lines: {ignore_lines}\nTest Lines: {test_lines}" +
     #       f"\nInput Text: {input_text}")
@@ -88,8 +92,17 @@ def string_comparison(file, case_data, class_name):
 
     file_filler(file, general_prompt_creator(class_name, input_text))
 
+    contain_num = len([x for x in test_lines if x[2] == 'C'])
+
+    contain_checks = 0
+
     for i in range(len(test_lines)):
-        file_filler(file, general_assertion_creator(test_lines[i][0], test_lines[i][1], case_data[4 + i]))
+        if test_lines[i][2] == 'T':
+            file_filler(file, general_assertion_creator(test_lines[i][0], test_lines[i][1], case_data[4 + i + contain_num]))
+        elif test_lines[i][2] == 'C':
+            file_filler(file, general_contain_assertion_creator(case_data[4 + contain_checks], test_lines[i][1], case_data[4 + i + contain_num]))
+            contain_checks += 1
+
 
     file_filler(file, general_success_filler(case_data[3]))
 

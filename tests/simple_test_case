@@ -4,7 +4,7 @@
 [I]Broccoli
 [T]By how much are you restocking Broccoli?
 [I]3
-[T]Stock of Broccoli is now increased to 3.
+[C]Stock of Broccoli is now increased to 3.
 [T]Are you finished with restocking? [Y]es or [N]o?
 [I]N
 [T]Are you a [M]anager, a [C]ustomer, or would you like to [E]xit?

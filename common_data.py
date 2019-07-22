@@ -22,8 +22,13 @@ def gradescope_header(name, points):
     return f'    @GradedTest(name = \"{name}\", max_score = {points})\n'
 
 
+def class_finder_header():
+    return f'''    public void test_basic_existence() {{
+'''
+
+
 def class_finder(class_name):
-    return f'''    Class<?> currClass = ReflectHelper.getClass("{class_name}");
+    return f'''        Class<?> currClass = ReflectHelper.getClass("{class_name}");
 
 '''
 
@@ -54,6 +59,12 @@ def general_prompt_creator(class_name, prompt):
 def general_assertion_creator(ideal_string, index_to_check, error_message):
     return f'''        assertEquals("{error_message}",
             lines[{index_to_check}].trim(), "{ideal_string}");
+
+'''
+
+
+def general_contain_assertion_creator(partial_string, index_to_check, error_message):
+    return f'''        assert lines[{index_to_check}].trim().contains("{partial_string}") : "{error_message}";
 
 '''
 

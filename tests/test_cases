@@ -1,4 +1,6 @@
 10
+Y
+Store
 
 SC
 program_exits_e
@@ -204,6 +206,7 @@ simple_test_case
 Typo Test Case
 10
 Congratulations! You just passed the typo test
+3
 Typo in requesting to restock
 Typo in asking the quantity to restock
 Incorrect message printed upon restock

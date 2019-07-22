@@ -1,18 +1,17 @@
-// Sample Autograder
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 import com.gradescope.jh61b.grader.GradedTest;
 import java.lang.reflect.*;
 
 public class autograder {
+        Class<?> currClass = ReflectHelper.getClass("Store");
+
 
     @Test(timeout = 5000)
-    @GradedTest(name = "Compilation/Main Method", max_score = 10)
-    public void test_main_method() {
-        Method main = TestHelper.getMethod("Store",
-                "main", String[].class);
-        System.out.println("Program compiles and main method exists.");
+    @GradedTest(name = "Compilation", max_score = 10)
+    public void test_basic_existence() {
+        Class<?> currClass = ReflectHelper.getClass("Store");
+
     }
 
     @Test(timeout = 5000)
@@ -437,8 +436,7 @@ public class autograder {
         assertEquals("Typo in asking the quantity to restock",
             lines[2].trim(), "By how much are you restocking Broccoli?");
 
-        assertEquals("Incorrect message printed upon restock",
-            lines[3].trim(), "Stock of Broccoli is now increased to 3.");
+        assert lines[3].trim().contains("3") : "Incorrect message printed upon restock";
 
         assertEquals("Incorrect message printed when asked for restocking confirmation",
             lines[4].trim(), "Are you finished with restocking? [Y]es or [N]o?");

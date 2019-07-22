@@ -2,10 +2,10 @@ from utils import get_file_content, file_filler, string_comparison, variable_fin
     method_value_verifier
 from common_data import common_header_data, common_footer_data, general_timeout, timeout_header, gradescope_header,\
     main_method_checker, common_closing_data, general_method_header, general_prompt_creator, general_assertion_creator,\
-    general_success_filler, class_finder
+    general_success_filler, class_finder, class_finder_header
 
 
-def smart_grader_driver(class_name):
+def smart_grader_driver():
 
     """Generates the autograder .java files for the user.
     Method Type: MAIN - DRIVER
@@ -29,10 +29,19 @@ def smart_grader_driver(class_name):
 
     # Get list of test cases
     test_case_files = get_file_content('test_cases').split('\n\n')
-    compilation_points = test_case_files[0]
+    basic_data = test_case_files[0].split('\n')
+    compilation_points = basic_data[0]
+    check_main = basic_data[1]
+    class_name = basic_data[2]
+    secondary_class_names = basic_data[3:]
     test_case_files = test_case_files[1:]
 
-    autograder = open('autograder.java', mode='w')
+    try:
+        autograder = open('autograder.java', mode='w')
+    except IOError:
+        print("Sorry, we could not create / overwrite autograder.java." +
+              " Please make sure that the file is not open in any other program before proceeding.")
+        return 2
 
     # MAIN AUTOGRADER WRITING BEGINS HERE #
 
@@ -43,8 +52,14 @@ def smart_grader_driver(class_name):
     # Test compilation and existence of main method
 
     file_filler(autograder, timeout_header(general_timeout))
-    file_filler(autograder, gradescope_header("Compilation/Main Method", compilation_points))
-    file_filler(autograder, main_method_checker(class_name))
+    file_filler(autograder, gradescope_header("Compilation/Main Method" if check_main == 'T' else "Compilation",
+                                              compilation_points))
+    file_filler(autograder, class_finder_header())
+    file_filler(autograder, class_finder(class_name))
+    [file_filler(autograder, x) for x in secondary_class_names]
+    if check_main == 'T':
+        file_filler(autograder, main_method_checker(class_name))
+    file_filler(autograder, common_closing_data)
 
     # Test Case Printing Starts Here
 
