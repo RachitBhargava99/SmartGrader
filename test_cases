@@ -1,0 +1,63 @@
+10
+Y
+Store
+
+SC
+program_exits_e
+Program Exits Properly at E
+2
+Success
+Typo in main prompt / incorrect prompt
+Typo in goodbye message
+
+SC
+program_exits_m
+Program Exits Properly after an M cycle
+1.5
+Success
+Typo in goodbye message
+
+SC
+program_exits_c
+Program Exits Properly after a C cycle
+1.5
+Success
+Typo in goodbye message
+
+SC
+test_formatting_random_purchase
+Program Gives Correct Output (along with correct formatting) For Purchased Items
+10
+Success
+Program does not format this line properly: *Here are the items you have purchased:* / typo / Customer cycle not working properly
+Program does not format this line properly: *2 Broccoli* / typo / Customer cycle not working properly
+Program does not format this line properly: *20 Watermelon* / typo / Customer cycle not working properly
+Program does not format this line properly: *1 Milk* / typo / Customer cycle not working properly
+Program does not format this line properly: *The total cost of your purchase is $53.77. Thank you for shopping!* / typo / Customer cycle not working properly
+
+EF
+Has a String[][] array
+10
+Store
+A
+2, String
+Your code declares a 2d string array
+
+EF
+Has a loop of some kind
+10
+Store
+L
+Your code uses a loop of some kind to check for items in the array.
+
+SC
+simple_test_case
+Typo Test Case
+10
+Congratulations! You just passed the typo test
+3
+Typo in requesting to restock
+Typo in asking the quantity to restock
+Incorrect message printed upon restock
+Incorrect message printed when asked for restocking confirmation
+Typo in asking if the user is a manager or customer, or if he wants to exit

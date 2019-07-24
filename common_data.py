@@ -91,7 +91,7 @@ def access_specifier_checker(access_specifier):
 
 
 def static_checker(is_static):
-    return f'''        ReflectAssert.aseertStatic(f, {'true' if is_static else 'false'});
+    return f'''        ReflectAssert.assertStatic(f, {'true' if is_static else 'false'});
 '''
 
 
@@ -127,3 +127,55 @@ def method_return_value_checker(class_name, method_name, input_types, sample_inp
 
         System.out.println("Your class has a method {method_name}");
 '''
+
+
+def general_loop_data(class_name):
+    return f'''        try {{
+            Scanner sc = new Scanner(new File("{class_name}.java"));
+            sc.useDelimiter("\\\\Z");
+            String submission_file = sc.next();
+            String[] lines = submission_file.split("\\n");
+            boolean found = false;
+            for (String s : lines) {{
+                s = s.trim();
+                if (!s.startsWith("//")) {{
+                    s = s.replaceAll(" ", "");
+                    if (s.contains("while") || s.contains("for") || s.contains("do")) {{
+                        found = true;
+                    }}
+                }}
+            }}
+
+            if (!found) {{
+                fail("Your code does not contain a loop of some kind.");
+            }}
+        }} catch (Exception e) {{
+                e.printStackTrace();
+        }}
+'''
+
+
+def general_array_data(class_name, num_dimensions, data_type):
+    return f'''        try {{
+                Scanner sc = new Scanner(new File("{class_name}.java"));
+                sc.useDelimiter("\\\\Z");
+                String submission_file = sc.next();
+                String[] lines = submission_file.split("\\n");
+                boolean found = false;
+                for (String s : lines) {{
+                    s = s.trim();
+                    if (!s.startsWith("//")) {{
+                        s = s.replaceAll(" ", "");
+                        if (s.contains("{data_type}{''.join(['[]' for x in range(num_dimensions)])}")) {{
+                            found = true;
+                        }}
+                    }}
+                }}
+
+                if (!found) {{
+                    fail("Your code does not contain a 2D String array.");
+                }}
+            }} catch (Exception e) {{
+                    e.printStackTrace();
+            }}
+    '''

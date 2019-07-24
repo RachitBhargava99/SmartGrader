@@ -1,0 +1,20 @@
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]C
+[O]
+[O]What would you like to buy?
+[I]milk
+[O]
+[O]How much would you like to buy?
+[I]2
+[O]You added 2 Milk to your shopping cart.
+[O]
+[O]Would you like to continue shopping? [Y]es or [N]o?
+[I]N
+[O]
+[O]Here are the items you have purchased:
+[O]2 Milk
+[O]The total cost of your purchase is $3.98. Thank you for shopping!
+[O]
+[O]Are you a (M)anager, (C)ustomer, or would you like to (E)xit?
+[I]E
+[T]Goodbye!

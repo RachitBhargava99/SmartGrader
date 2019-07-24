@@ -261,3 +261,45 @@ def method_value_verifier(file, case_data, class_name):
 
     file_filler(file, general_success_filler(case_data[4]))
     file_filler(file, common_closing_data)
+
+
+def element_finder(file, case_data, class_name):
+
+    """Fills the file with the string comparison data
+    Method Type: NORMAL - HELPER
+
+    Parameters
+    ----------
+    file : <class '_io.TextIOWrapper'>
+        File to be written to
+    case_data : List with all data necessary for the function to work
+        0   - display_name : str
+        1   - points : str
+        2   - class_name : str
+        3   - element_name : str
+            L for loop
+            A for Array
+        4   - extra_inputs : str    OPTIONAL
+            Loop
+                N/A
+            Array
+                Number of Dimensions of Array, Base Data Type of Array
+        5   - success_message : str
+
+    Returns
+    -------
+    status : int
+        Returns 0 for success, 1 for failure
+    """
+
+    file_filler(file, timeout_header(general_timeout))
+    file_filler(file, gradescope_header(case_data[0], case_data[1]))
+    file_filler(file, general_method_header(f"""test_has_{'loop' if case_data[3] == 'L' else f'{case_data[4].split(",")[0]}D_{case_data[4].split(",")[1].strip()}_array'}"""))
+
+    if case_data[3] == 'L':
+        file_filler(file, general_loop_data(case_data[2]))
+    elif case_data[3] == 'A':
+        file_filler(file, general_array_data(case_data[2], int(case_data[4].split(",")[0]), case_data[4].split(",")[1].strip()))
+
+    file_filler(file, general_success_filler(case_data[-1]))
+    file_filler(file, common_closing_data)

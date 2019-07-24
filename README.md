@@ -22,6 +22,10 @@ This feature allows you to check for presence of some method.
 This feature allows you to ensure that some given method is working as it should.
 In other words, it checks whether or not is a given function returning the desired value.
 
+### Element Finder
+This feature allows you to look for some of the common elements in the submitted code.
+The elements currently supported include loops and variable-dimensional arrays
+
 ## How To Use
 ### Basic Setup
 The file must start with the following data:
@@ -96,3 +100,20 @@ Here's the format expected for the test specifications:
         6   - expected_return : str
             Expected return value (enter 'void' for void return type / no return expected)
         7   - success_message : str
+
+### Element Finder
+The test case in test_cases file must have 'EF' before the main test specifications.
+Here's the format expected for the test specifications:
+
+        0   - display_name : str
+        1   - points : str
+        2   - class_name : str
+        3   - element_name : str
+            L for loop
+            A for Array
+        4   - extra_inputs : str    OPTIONAL
+            Loop
+                N/A
+            Array
+                Number of Dimensions of Array, Base Data Type of Array
+        5   - success_message : str
